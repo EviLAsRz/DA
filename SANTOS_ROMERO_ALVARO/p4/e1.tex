@@ -1,0 +1,22 @@
+El algoritmo a utilizar será el algoritmo A*.
+
+Este algoritmo nos permite encotrar soluciones mediante las comparaciones entre nodos.
+La función que representa el algoritmo el: f(n) = h(n) + c(n).
+
+Explicación de los valores:
+
+->h(n): Representa el valor heurístico del nodo,en mi caso voy a utilizar la distancia de
+manhattan.
+
+->c(n): Representa el coste de movernos de un nodo A a un nodo B.
+
+Funcionamiento del algortimo:
+
+En A*, tenemos tres variables principales, que son actual (iterador que almacena el nodo actual),
+abiertos (lista que almacena los nodos abiertos y explorables) y cerrados (lista que almacena los nodos ya visitados)
+
+Para un correcto funcionamiento del algoritmo, se ha ordenado la lista de abiertos para reducir el tiempo necesario de
+encontrar una solución.
+Para ello, se ha utilizado la clase montículo de std.
+
+Para la recuperación del algoritmo A*, se utilizará una función que reciba el nodo inicial y el nodo final.

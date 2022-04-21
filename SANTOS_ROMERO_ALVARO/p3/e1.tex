@@ -1,0 +1,28 @@
+Como estructura de datos para la representación de las celdas, se ha utilizado
+una estructura con los siguientes miembros:
+
+1-. Posición de celdas con dos enteros: row_ y col_ siendo fila y columna respectivamente.
+2-. Valoración de la celda con un flotante: value_.
+3-. Sobrecarga de operador de copia y de los operadores < y <= (necesario para utilizar los algoritmos de ordenación).
+
+Código: 
+
+struct Cell{
+
+    int row_,col_;
+    float value_;
+    Cell(int r=0, int c=0, float v=0):row_(r), col_(c), value_(v){}
+    Cell operator = (const Cell &c){
+        this->row_ = c.row_;
+        this->col_ = c.col_;
+        return *this;
+    }
+    bool operator < (const Cell &c){
+        return value_ < c.value_;
+    }
+    bool operator <= (const Cell &c){
+        return value_ <= c.value_;
+    }
+};
+
+Cell create_cell(Cell c){return c.row_, c.col_, c.value_;}   

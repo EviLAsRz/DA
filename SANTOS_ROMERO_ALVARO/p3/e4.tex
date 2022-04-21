@@ -1,0 +1,61 @@
+Para realizar las pruebas de caja negra, vamos a utilizar un par vectores opuestos, de tal
+forma que al utilizar alguno de los algoritmos de ordenación, compararemos que el resultado coincide
+con el opuesto.
+
+bool prueba_vector_estatico(){
+std::vector<int>v = {5,4,3,2,1};
+std::vector<int>v2 = {1,2,3,4,5};
+unsigned op;
+bool ordenado = true;
+std::cout<<"1-.Ordenacion por fusion\n2-.Ordenacion rapida"<<std::endl;
+std::cin>>op;
+switch(op){
+    case 1: mergeSort(v,0,v.size()-1);
+    break;
+    case 2: quickSort(v,0,v.size()-1);
+        break;
+    }
+    //Comparación elemento a elemento
+     for(size_t i=0; i<v.size();i++){
+        if(v[i]!= v2[i]){
+            ordenado = false;
+        }
+    }
+
+    return ordenado; //true si esta ordenado
+}
+
+Para realizar la prueba de caja negra de vectores pseudodinámicos, utilizaremos vectores de tamaño 100 hasta 10000, con
+aumentos de 100 en 100 (tamaños 100,200,300,etc).
+Devuelve true si después de la ejecución de los algoritmos, estos vectores están ordenados.
+
+    std::vector<int>v,u;
+    bool ordenado = true;
+    unsigned op;
+    size_t t = 100; //tamaño inicial del vector
+    
+    while(t < 10000 && ordenado){ //mientras que no supere el limite y ordenado sea true
+        //se inicializa el vector con el tamaño
+        v = std::vector<int>(t);
+        for(size_t i = 0; i < t; i++)
+        v[i] = i+1;
+    
+    u = v;  //a priori, u ya está ordenado de menor a mayor
+    //hacemos un shuffle para desordenar el vector usando random_device
+    std::shuffle(v.begin(),v.end(), std::random_device());
+
+    //llamamos a ordencion fusion o rapida
+    //mergeSort(v,0,v.size()-1);   
+    quickSort(v,0,v.size()-1);
+    
+    //se comprueba que está ordenado con u que tiene el vector ordenado decrecientemente
+    for(size_t i=0; i<v.size();i++){
+        if(v[i]!= u[i]){
+            ordenado = false;
+        }
+    }
+        //se aumenta el tamaño del vector en 100
+        t+=100;
+    }
+    return ordenado;
+}

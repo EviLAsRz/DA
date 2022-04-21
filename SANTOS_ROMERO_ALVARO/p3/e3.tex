@@ -1,0 +1,44 @@
+ALGORITMO DE ORDENACION RAPIDA O QUICKSORT.
+
+
+Especificación del algoritmo:
+
+-Algoritmo Divide y Vencerás perteneciente al esquema de Partición.
+
+-Recibe un (std::vector<t> &array, int low, int high), donde low y high representa el rango desde 0 hasta tam -1.  
+-Precondiciones: Vector t esté inicializado
+-Postcondiciones: Devuelve la lista de t elementos ordenados.
+
+Al igual que la versión vista en teoría, el algoritmo utiliza un parámetro p (pivote) para reorganizar el
+vector a partir del cual a la derecha de este estarán los elementos mayores y a la izquierda los menores.
+
+template <class t>
+void quickSort(std::vector<t>& array, int low, int high) {
+  if (low < high) {
+      
+    int pi = partition(array, low, high);
+
+    quickSort(array, low, pi - 1);
+
+    quickSort(array, pi + 1, high);
+  }
+}
+
+template <class t>
+int partition(std::vector<t>& array, int low, int high) {
+    
+  t pivot = array[high];
+  
+  int i = (low - 1);
+
+  for (int j = low; j < high; j++) {
+    if (array[j] <= pivot) {
+      i++;  
+      std::swap(array[i], array[j]);
+    }
+  }
+  
+  std::swap(array[i + 1], array[high]);
+  
+  return (i + 1);
+}

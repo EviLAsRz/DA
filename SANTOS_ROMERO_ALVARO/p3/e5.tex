@@ -1,0 +1,50 @@
+Analisis temporal de los algoritmos de ordenación de la practica:
+
+Algoritmo de Fusion:
+
+Siendo un tablero, sabemos que tenemos f filas y c columnas.
+Una celda se compone de un elemento fila y un elemento columna, por lo que
+n = f X c
+
+Cuando n es menor que el umbral establecido, se van a ejecutar n(n-1)/2 operaciones patrón (orden O(n))
+Para tamaños de n mayor que el umbral, se hacen dos llamadas recursivas de tamaños (n/2) aproximadamente.
+Por lo que, para este caso, se hacen dos ordenaciones de (n/2).
+
+Resumiendo:
+
+        
+        [ n(n-1)/2,                                   n <= n0                         
+t(n) => [                                                    
+        [ t([por defecto]n/2) + t([por exceso]n/2),   n > n0 
+
+Resolviendo la ecuación de recurrencia, observamos que en el peor caso, el orden será de O(n * log n)
+
+Para la ordenación de las defensas, se utiliza un algoritmo devorador que tendrá un orden O (n^2), pero
+como se realiza una preordenación de las celdas, el orden cambia a (n * log n).
+
+En conclusión, el t(n) para el algoritmo de ordenación de las defensas será = t(n * log n) + t (n * log n)
+
+Algoritmo de Ordenación Rápida:
+
+Siendo un tablero, sabemos que tenemos f filas y c columnas.
+Una celda se compone de un elemento fila y un elemento columna, por lo que
+n = f X c
+
+EL algoritmo consta de dos partes, la función de partición que ordena los elementos hasta el pivote y
+la función de ordenación que se llama recursivamente con las dos mitades del vector. 
+Para vectores suficientemente pequeños, el t(n) será de n(n-1)/2.
+Para vectores mayores que n, se hacen dos llamadas recursivas con t(n) = t(n/2) + n
+
+Resumiendo:
+
+        
+        [ n(n-1)/2,                                       n <= n0                          
+t(n) => [                                                    
+        [ t([por defecto]n/2) + t([por exceso]n/2) + n,   n > n0 
+
+Resolviendo la ecuación de recurrencia, observamos que en el peor caso, el orden será de O(n * log n) y
+al igual que en el algoritmo de fusión, este será de orden O 2(n * log n) al tener que ordenar las defensas también (s
+utiliza el mismo algoritmo devorador en ambos casos).
+
+
+En resumen, estos algoritmos tienen el mismo orden, difiriendo en la constante multiplicativa.

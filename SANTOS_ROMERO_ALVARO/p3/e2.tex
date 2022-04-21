@@ -1,0 +1,69 @@
+ALGORITMO DE FUSION O MERGESORT.
+
+
+Especificación del algoritmo:
+
+-Algoritmo Divide y Vencerás perteneciente al esquema de Equilibrados.
+
+-Recibe un (std::vector<t> &arr, size_t l, size_t r), donde t y r representa el rango desde 0 hasta tam -1.  
+-Precondiciones: Elementos de la lista deben tener sobrecargado el operador < y el <=.
+-Postcondiciones: Devuelve la lista de t elementos ordenados.
+
+Al igual que la versión vista en teoría, el algoritmo utiliza tres parámetros:
+-i representa la posición a partir de la cual vamos a ordenar el vector.
+-j representa la posición tope de la ordenación del vector, es decir, hasta donde se va a ordenar.
+-k representa la posición intermedia por la dividiremos el vector.
+
+template <class t>
+void mergeSort(std::vector<t> &arr,size_t l,size_t r){
+    if(l>=r){
+        return;
+    }
+    size_t m = (l+r-1)/2;
+    mergeSort(arr,l,m);
+    mergeSort(arr,m+1,r);
+    merge(arr,l,m,r);
+}
+
+template <class t>
+void merge(std::vector<t> &arr, size_t l, size_t m, size_t r)
+{
+    size_t n1 = m - l + 1;
+    size_t n2 = r - m;
+        
+    std::vector<t>L(n1),R(n2);
+   
+    for (int i = 0; i < n1; i++){//copia la parte izquierda al centro
+        L[i] = arr[l + i];
+    }
+        
+    for (int j = 0; j < n2; j++){//copia la parte derecha al centro
+         R[j] = arr[m + 1 + j];
+    }
+
+    int i = 0;
+    int j = 0;
+    int k = l;
+ 
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        }
+        else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    } 
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
