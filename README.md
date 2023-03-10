@@ -1,2 +1,2 @@
 # DA
-DA
+Diseño de Algoritmos
