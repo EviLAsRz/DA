@@ -1,0 +1,17 @@
+1-. En el esquema general de los algoritmos devoradores, no aparece explicitamente la funcion objetivo. ¿En que parte del esquema es tenida en cuenta? ¿Como?
+
+# Esquema general:
+
+devorador(C) -> S
+S <- ∅
+
+mientras ¬solucion(S) ^ C != ∅
+	p <- seleccion(C)
+	C <- C - {p}
+	si factible (S U {p})
+		S <- S U {p}
+
+
+- Se tiene en cuenta en la funcion de seleccion.
+
+- La estrategia devoradora en la que se basa la funcion de seleccion estara definida de acuerdo a la funcion objetivo.

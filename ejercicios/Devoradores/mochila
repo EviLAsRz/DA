@@ -17,7 +17,7 @@ S <- ∅
 mientras c != 0 ^ C != ∅
 	(v,p) <- selecciona-objeto(C)
 	C <- C - {(v,p)}
-	si p <= C
+	si p <= c
 		S <- S U {(v,p)}
 		c <- c - p
 	si no

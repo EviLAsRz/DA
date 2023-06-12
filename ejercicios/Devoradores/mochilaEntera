@@ -1,0 +1,56 @@
+3-. La versión entera del problema de la mochila consiste en llenar una mochila con objetos indivisibles maximizando el valor total de éstos. La mochila puede contener objetos cuyo peso total no exceda de su capacidad, c, y se conocen los pesos, p1,...,pn, y valores, v1,...,vn, de los objetos.
+
+Demuestre, mediante contraejemplos apropiados, que ninguna de las siguientes estrategias devoradoras, permiten, por sí mismas, resolver exactamente el problema:
+
+a) Primero objetos mas valiosos.
+b) Primero los objetos menos pesados.
+c) Primero los objetos de mayor relacion valor-peso.
+
+Diseñe un algoritmo aproximado para resolver el problema basado en cada uno de ellas.
+Intente primero obtener un algoritmo que realize O (n2) operaciones elementales y estudie luego como podría mejorarse.
+
+
+Para este ejercicio, se utilizará un algoritmo genérico de mochila, ya que lo único que cambia es la función de selección de esta.
+
+mochila (O,c) -> S
+C <- O
+S <- ∅
+
+mientras c != 0 ^ C != ∅
+{(v,p)} <- selecciona-objeto(C)
+si p <= c
+	S <- S U {(v,p)}
+	c <- c - p
+
+Seleciona-objeto tiene orden lineal, puesto que se recorre C entero.
+
+a) Mayor valor (a)
+
+selecciona-objeto (C) -> {v,p}
+r <- -∞
+para todo {a,b} ∈ C
+	si a > r
+	r <- a
+	{(v,p)} <- {(a,b)}
+
+b) Menor peso (b)
+
+selecciona-objeto (C) -> {v,p}
+r <- -∞
+para todo {a,b} ∈ C
+	si b < r
+	r <- b
+	{(v,p)} <- {(a,b)}
+
+c) Mayor relacion v-p (a/b)
+
+selecciona-objeto (C) -> {v,p}
+r <- -∞
+para todo {a,b} ∈ C
+	si a/b < r
+	r <- a/b
+	{(v,p)} <- {(a,b)}
+
+
+En cuanto a análisis, tenemos que es orden O(n2.)
+Para mejorarlo, podemos preordenar los objetos según la estrategia, consiguiendo ordenes de O(nlogn).
