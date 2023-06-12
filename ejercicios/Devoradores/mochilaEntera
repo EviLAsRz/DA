@@ -47,7 +47,7 @@ c) Mayor relacion v-p (a/b)
 selecciona-objeto (C) -> {v,p}
 r <- -∞
 para todo {a,b} ∈ C
-	si a/b < r
+	si a/b > r
 	r <- a/b
 	{(v,p)} <- {(a,b)}
 

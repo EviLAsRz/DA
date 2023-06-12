@@ -1,0 +1,1 @@
+¿Que orden temporal tiene, en el peor caso, el algoritmo de kruskal si las estructuras de particion se representan mediante vectores de pertenencia? Compare el resultado con el del algoritmo de Prim.
