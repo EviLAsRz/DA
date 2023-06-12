@@ -1,0 +1,40 @@
+4-. Tenemos que almacenar n programas de t1,...,tn KiB, respectivamente, en un CD-ROM de cKiB de capacidad.
+Desgraciadamente, no caben todos. Diga cuál sería la estrategia devoradora trivial que se seguiría en los siguientes supuestos:
+
+a) Se desea maximizar el número de programas.
+b) Se desa aprovechar al máximo la capacidad del disco.
+
+¿Es la estrategia del segundo supuesto óptima? Si lo es, demuéstrelo. Si no lo es, ponga un contraejemplo.
+
+programas (P,c) -> S
+
+S <- ∅
+C <- P
+(preordenacion(C)) -> O(logn)
+
+mientras c != 0 ^ C != ∅ -> O(n)
+	{(v,p)} <- selecciona-objeto(C)
+	si p <= c
+		S <- S U {(v,p)}
+		c <- c - p
+
+
+Estrategias de seleccion:
+
+a) Maximizar numero de programas -> menor tamaño, mayor valor (mejor valor)
+b) Aprovechar al máximo la capacidad del disco -> Mayor tamaño, mayor valor (no optima)
+
+Contraejemplos:
+
+Programas de (v,p) para un tamaño de disco de 10 KiB:
+1-. (7,9)
+2-. (6,5)
+3-. (5,2)
+
+Para la estrategia 1, programas 2,3 (11)
+Para la estrategia 2, programas 1 (7)
+
+Por lo tanto, queda demostrado que la estrategia 2 no es optima.
+
+En cuanto al análisis, tenemos orden O(n2).
+Preordenando los programas, conseguimos un orden O (nlogn).
